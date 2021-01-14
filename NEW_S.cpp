@@ -218,3 +218,39 @@ long withdrawal(long pr)
 	return(ver);
 
 }//withdrawal
+void depos(long pr)
+{
+	mst k;
+	bal p,q;
+	fstream f,g;
+	f.open("ballog.dat",ios::in|ios::binary);
+	int ver=0;
+
+	while(f.read((char*)&p,sizeof(p)))
+	{point=f.tellg()-sizeof(p);
+	if(strcmpi(p.cno,global.cno)==0)
+		      {
+			 q=p;
+
+			 break;
+		      }
+	}
+	f.close();
+	f.open("ballog.dat",ios::in|ios::out|ios::binary);
+	
+	       {        q.deposited=pr;
+			q.balance+=pr;
+			date d;
+			getdate(&d);
+			f.seekp(point);
+			q.dot=d;
+			f.write((char*)&q,sizeof(q));
+			global.opal=q.balance;
+		    //   cout<<"verified  "<<global.name<<" "<<global.opal;
+		      //	delay(3000);
+	       }
+	f.close();
+
+	//return(q.balance);
+
+}//depos
