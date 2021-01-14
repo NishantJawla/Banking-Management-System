@@ -4,7 +4,7 @@
 #include<string.h>
 #include<dos.h>
 #include<stdio.h>
-long point;
+	long point;
 struct mst
 {	char cno[21], pin[5];
 	char name[50];
@@ -18,20 +18,19 @@ struct bal
 
 }globe;
 mst global;
-
 void precaution()
-{   clrscr();
+{       clrscr();
 	fstream f,g;
 	f.open("s.txt",ios::in);
 	g.open("i2334.txt",ios::out);
 	char c,d;
 	while(f.get(c))
-	{      
+	{       //cout<<c;
 		if(c=='\n')
-		{     
+		{      // cout<<endl<<endl<<d;
 			f.get(d);
 			if(d<48 || d>57)
-			break;
+				break;
 		}
 		g<<c;
 	}
@@ -42,12 +41,15 @@ void precaution()
 }//precaution
 
 void chkupd()
-{   clrscr();
+{       clrscr();
 	fstream f,g;
 	mst p,q,blk={"","","",0};
-  
+  //	int count=0;
 	f.open("s.txt",ios::in);
-    
+    //	g.open("mst.dat",ios::in|ios::binary);
+      //	while(g.read((char*)&q,sizeof(q))) count++;
+       //	g.close();
+       //	g.open("mst.dat",ios::in|ios::binary);
 	g.open("mst.dat",ios::out|ios::binary);
 	char c;
 	int i=0,j=0,z1=0;
@@ -59,7 +61,7 @@ void chkupd()
 		}
 		p.cno[i]='\0';
 		i=0;
-		
+		//p.pin=0;
 		while(f.get(c))
 		{	if(c=='-')
 				break;
@@ -81,20 +83,44 @@ void chkupd()
 			p.opal=p.opal*10+(c-48);
 		}
 		i=0;
-		f.get(c); 
+		f.get(c); //take enter from txt file
+  //		cout<<p.cno<<" "<<p.pin<<" "<<p.name<<" "<<p.opal<<endl;
+//		if(count>0)
+		//{
 		 int counter1=0;
 		 point=0;
 
-		    
+		       /*	while(g.read((char*)&q,sizeof(q)))   //q  obj taking val from g
+			{//cout<<"gvl"<<q.cno<<" "<<q.pin<<" "<<q.name<<" ";
+			   //	delay(500);
+				if(strcmpi(p.cno,q.cno)==0)
+					counter1=1;
+			}//while
+			g.close();
+			if(!counter1  && p.opal!=0)
+			{
+				g.open("mst.dat",ios::app|ios::binary);
+				g.write((char*)&p,sizeof(p));
+				g.close();
+			}*/
 			if(strcmpi(p.cno,""))
 			g.write((char*)&p,sizeof(p));
 			q=p=blk;
-	 
-
+	       //	}//if
+   /*		else
+		{		g.close();
+				g.open("mst.dat",ios::out|ios::app|ios::binary);
+				g.write((char*)&p,sizeof(p));
+				g.close();
+				g.open("mst.dat",ios::in|ios::binary);
+				p=blk;
+				count=10;
+		}//else*/
+//		getch();
 	}//while !f.eof
 	f.close();
 	g.close();
-
+//	getch();
 }       //chkupd
 void view()
 {	clrscr();
@@ -131,7 +157,6 @@ int verify(char cno[21],char pin[5])
 	f.close();
 	return flag;
 }//verify
-
 void updtblg()
 {  mst k;
    bal p;
@@ -237,7 +262,17 @@ void depos(long pr)
 	}
 	f.close();
 	f.open("ballog.dat",ios::in|ios::out|ios::binary);
-	
+	/*if(pr<=q.balance)
+	{
+		q.drawn=pr;
+		q.balance-=pr;
+
+		ver=1;
+	}
+	else
+	{	cout<<"Insufficient balance";
+	} */
+	//if(ver==1)
 	       {        q.deposited=pr;
 			q.balance+=pr;
 			date d;
@@ -254,8 +289,6 @@ void depos(long pr)
 	//return(q.balance);
 
 }//depos
-
-
 void updtmst()          //updating mst file
 {
 
