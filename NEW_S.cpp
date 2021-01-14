@@ -4,6 +4,20 @@
 #include<string.h>
 #include<dos.h>
 #include<stdio.h>
+long point;
+struct mst
+{	char cno[21], pin[5];
+	char name[50];
+	long	 opal;
+
+};
+struct bal
+{	char cno[21];
+	long drawn,deposited, balance;
+	date dot;                       //date of trans..
+
+}globe;
+mst global;
 
 void precaution()
 {   clrscr();
@@ -82,4 +96,38 @@ void chkupd()
 	g.close();
 
 }       //chkupd
+void view()
+{	clrscr();
+	ifstream f;
+	mst p;
+	int i=0;
+	f.open("mst.dat",ios::in|ios::binary);
+	while(f.read((char*)&p,sizeof(p)))
+	{	cout<<"Rec No "<<i++<<" "<<p.cno<<" - "<<p.name<<" - "<<p.opal<<" - "<<endl;
+	}
+	f.close();
+	getch();
+}//view
 
+int verify(char cno[21],char pin[5])
+{
+	fstream f;
+	f.open("mst.dat",ios::in|ios::binary);
+	mst p;
+	int flag=0;
+	while(f.read((char*)&p,sizeof(p)))
+	{
+	if(strcmpi(p.cno,cno)==0)
+		{	if(strcmpi(p.pin,pin)==0)
+			{	flag=1;
+				global=p;
+				strcpy(globe.cno,p.cno);
+				break;
+			}
+		}
+
+	}//while ends
+
+	f.close();
+	return flag;
+}//verify
