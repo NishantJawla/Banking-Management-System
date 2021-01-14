@@ -254,3 +254,67 @@ void depos(long pr)
 	//return(q.balance);
 
 }//depos
+
+
+void updtmst()          //updating mst file
+{
+
+	fstream f;
+	f.open("mst.dat",ios::in|ios::binary);
+	mst p;
+	point =0;
+	while(!(f.eof()))
+	{     	long point=f.tellg();
+		f.read((char*)&p,sizeof(p));
+		 if(strcmpi(p.cno,global.cno)==0)
+		 {	 f.close();
+			 f.open("mst.dat",ios::in|ios::out|ios::binary);
+			 f.seekp(point);
+			 //cout<<global.cno<<" "<<global.name<<" "<<global.opal;
+			 //delay(2000);
+			 f.write((char*)&global,sizeof(global));
+			 f.close();
+			 break;
+		 } //if
+	} //while
+}//updtmst close
+void updts ()                              //updating s.txt file
+{       fstream f,g,h;
+	mst p;
+	h.open("s.txt",ios::out);
+	f.open("st.txt",ios::out);            //new temp file
+	g.open("mst.dat",ios::in|ios::binary);
+	while(g.read((char*)&p,sizeof(p)))
+	{
+	       f<<p.cno<<'-'<<p.pin<<'-'<<p.name<<'-'<<p.opal<<'-'<<endl;
+	}//while
+	g.close();
+	f.close();
+
+	//getch();
+	remove("s.txt");
+	rename("st.txt","s.txt");
+}
+void man()
+{
+// precaution();
+
+// view();
+// clrscr();
+ clrscr();
+// cout<<"100";
+ //delay(1000);
+// chkupd();
+
+ //updts();
+ //getch();
+ //view();
+// withdrawal(10);
+ // updtmst();
+// clrscr();
+ view();
+
+}
+
+
+
