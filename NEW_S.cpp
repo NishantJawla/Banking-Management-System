@@ -131,3 +131,90 @@ int verify(char cno[21],char pin[5])
 	f.close();
 	return flag;
 }//verify
+
+void updtblg()
+{  mst k;
+   bal p;
+   fstream f,g;
+   f.open("ballog.dat",ios::in|ios::out|ios::binary);
+   g.open("mst.dat",ios::in|ios::binary);
+   while(!g.eof())
+   {
+    g.read((char*)&k,sizeof(k));
+    while(!f.eof())
+	{point=f.tellg();
+	f.read((char*)&p,sizeof(p));
+	 if(strcmpi(p.cno,k.cno)==0)
+	 {
+		p.balance=k.opal;
+
+		f.seekp(point);
+		f.write((char*)&p,sizeof(p));
+	 }
+	 }//in while
+    f.seekg(ios::beg);
+   }//while
+}//update
+
+long withdrawal(long pr)
+{       mst k;
+	bal p,q;
+	fstream f,g;
+       /*	f.open("ballog.dat",ios::out|ios::binary);
+	g.open("mst.dat",ios::in|ios::binary);
+	//g.seekg(0);
+	while(g.read((char*)&k,sizeof(k)))
+	{
+		strcpy(p.cno,k.cno);
+		p.drawn=0;
+		p.balance=k.opal;
+		p.deposited=0;
+		date d;
+		getdate(&d);
+		p.dot=d;
+		f.write((char*)&p,sizeof(p));
+	}//while
+	f.close();
+	g.close();
+	*/
+	f.open("ballog.dat",ios::in|ios::binary);
+	long ver=0;
+
+	//strcpy(global.cno,"1111111111111111111");
+	while(f.read((char*)&p,sizeof(p)))
+	{point=f.tellg()-sizeof(p);
+	if(strcmpi(p.cno,global.cno)==0)
+		      {
+			 q=p;
+
+			 break;
+		      }
+	}
+	f.close();
+	f.open("ballog.dat",ios::in|ios::out|ios::binary);
+	if(pr<=q.balance)
+	{
+		q.drawn=pr;
+		q.balance-=pr;
+
+		ver=1;
+	}
+	else
+	{	cout<<"Insufficient balance";
+	}
+	if(ver==1)
+	       {
+			date d;
+			getdate(&d);
+			f.seekp(point);
+			q.dot=d;
+			f.write((char*)&q,sizeof(q));
+			global.opal=q.balance;
+		    //   cout<<"verified  "<<global.name<<" "<<global.opal;
+		      //	delay(3000);
+	       }
+	f.close();
+
+	return(ver);
+
+}//withdrawal
