@@ -26,13 +26,23 @@ void logo()
 	outtextxy(mx/2-2,my/5+32,"T");
 	outtextxy(mx/2-2,my/5+52,"M");
 }
+void wel()
+{
 
+	int mx=getmaxx();
+	int my=getmaxy();
+	settextstyle(7,0,7);
+	outtextxy(mx/4,my/2,"Welcome to");
+	outtextxy(mx/4-50,my/2+100,"Union ATM !!");
+
+
+}
 void wlcm()
 {      // int g=0,d=0;
 	//initgraph(&g,&d,"C:\\TURBOC3\\BGI");
 	cleardevice();
 	logo();
-	//wel();
+	wel();
 	delay(3000);
 	//getch();
 	//closegraph();
