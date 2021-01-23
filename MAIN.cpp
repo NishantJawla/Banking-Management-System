@@ -212,8 +212,7 @@ void login_layout()
 getche();
 }//ends login_layout
 
-<<<<<<< Updated upstream
-=======
+
 
 void withdrawl()
 {
@@ -291,6 +290,7 @@ void withdrawl()
 
 }//Withdrawl_Page ends
 
+
 void bomd(int a,int b)
 {int mx=getmaxx();
 int my=getmaxy();
@@ -328,7 +328,7 @@ setcolor(WHITE);
 }
 
 
->>>>>>> Stashed changes
+
 void main()
 {
     //int mx=getmaxx();
