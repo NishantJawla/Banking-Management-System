@@ -212,6 +212,123 @@ void login_layout()
 getche();
 }//ends login_layout
 
+<<<<<<< Updated upstream
+=======
+
+void withdrawl()
+{
+	cleardevice();
+	setbkcolor(BLUE);
+	int mx=getmaxx();
+	int my=getmaxy();
+	setcolor(YELLOW);
+	settextstyle(1,0,3);
+	outtextxy(mx/3+30,20,"CASH WITHDRAWL");
+	setcolor(WHITE);
+	settextstyle(0,0,2);
+	outtextxy(50,my/2-20,"Enter Amount to be Withdrawn");
+	rectangle(2*mx/3,my/2+20,mx-10,my/2+60);
+//	moveto(2*mx/3+5,my/2+40);        ***************
+	settextstyle(0,0,1);
+	outtextxy(2*mx/3+5,my/2+40,"Rs");
+	int a;
+	a:          //goto
+	int i=0;
+	char cno[9],di[2];
+	for(i=0;i<9;i++)
+		cno[i]='\0';
+	di[1]='\0';
+	i=0;
+	while(i<7)
+	{	char c=getch();
+		if(c==13)
+		break;
+		if(c==8)
+		{	//di[0]=' ';
+			--i;
+			setcolor(BLUE);
+			for(int j=0;j<20;j++)
+			rectangle(2*mx/3+32+(i*10),my/2+35,2*mx/3+32+(i*10)+j,my/2+35+j);      			setcolor(WHITE);
+			continue;
+		}
+		if(c<48||c>57)
+		{outtextxy(2*mx/3+10,my/2+80,"Enter valid Info.");
+			delay(500);
+			setfillstyle(SOLID_FILL,BLUE);
+			bar(2*mx/3+30,my/2+30,mx-40,my/2+50);
+			bar(2*mx/3+8,my/2+70,2*mx/3+200,my/2+90);
+			goto a;
+		}//if ends
+		else
+			di[0]=c;
+		outtextxy(2*mx/3+35+(i*10),my/2+40,di);
+		cno[i]=c;
+		i++;
+	} //while ends
+	cno[i]='\0';
+	rectangle(4*mx/5,4*my/5,5*mx/5+50,4*my/5+40);
+	rectangle(4*mx/5,4*my/5+60,5*mx/5+50,4*my/5+100);
+	outtextxy(4*mx/5+10,4*my/5+20,"Accept");
+	outtextxy(4*mx/5+10,4*my/5+80,"Cancel");
+	//to check balance with min_balance and give appropriate message
+	int jk=0;
+	long drawn=0,bal;
+	while(cno[jk]!='\0')
+	{     	drawn=drawn*10+(cno[jk]-48);
+		jk++;
+	}
+	//cout<<"drawn"<<drawn;
+	//exit(0);
+	//cout<<"balance"<<bal;
+	if(drawn)
+       bal=withdrawal(drawn);
+      //<<" "<<drawn;
+      // updtmst();
+      // updts();
+      // view();
+       transac();
+       balance();
+
+}//Withdrawl_Page ends
+
+void bomd(int a,int b)
+{int mx=getmaxx();
+int my=getmaxy();
+setcolor(YELLOW);
+		rectangle(mx/60,my/3+20,mx/20*8,my/3-30);            //1L
+		rectangle(mx/60,my/3+70,mx/20*8,my/3+120);           //2L
+		rectangle(mx/60,my/3+170,mx/20*8,my/3+220);          //3L
+		rectangle(mx/60,my/3+270,mx/20*8,my/3+320);          //4L
+		rectangle(mx/2+60,my/3+20,mx/60*53+100,my/3-30);     //1R
+		rectangle(mx/2+60,my/3+70,mx/60*53+100,my/3+120);    //2R
+		rectangle(mx/2+60,my/3+170,mx/60*53+100,my/3+220);   //3R
+		rectangle(mx/2+60,my/3+270,mx/60*53+100,my/3+320);   //4R
+      setcolor(BLUE);
+      if(a==0)
+      { if(b==0)
+		rectangle(mx/60,my/3+20,mx/20*8,my/3-30);            //1L
+	if(b==1)
+		rectangle(mx/60,my/3+70,mx/20*8,my/3+120);           //2L
+	if(b==2)
+		rectangle(mx/60,my/3+170,mx/20*8,my/3+220);          //3L
+	if(b==3)
+		rectangle(mx/60,my/3+270,mx/20*8,my/3+320);          //4L
+      }
+      if(a==1)
+      {if(b==0)
+		rectangle(mx/2+60,my/3+20,mx/60*53+100,my/3-30);     //1R
+       if(b==1)
+		rectangle(mx/2+60,my/3+70,mx/60*53+100,my/3+120);    //2R
+       if(b==2)
+		rectangle(mx/2+60,my/3+170,mx/60*53+100,my/3+220);   //3R
+       if(b==3)
+		rectangle(mx/2+60,my/3+270,mx/60*53+100,my/3+320);   //4R
+     }
+setcolor(WHITE);
+}
+
+
+>>>>>>> Stashed changes
 void main()
 {
     //int mx=getmaxx();
