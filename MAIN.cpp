@@ -291,6 +291,61 @@ void withdrawl()
 }//Withdrawl_Page ends
 
 
+int  s()
+{ 	int dir;
+	int cx=0,cy=0;
+	bomd(cx,cy);
+	while(1)
+	{ dir=getch();
+	if(dir==80)
+	{cy++;
+		if(cy==4)
+		{cy=0;}
+	}
+	if(dir==72)
+	{cy--;
+		if(cy==-1)
+		cy=3;
+	}
+	if(dir==77)
+	{cx++;
+		if(cx==2)
+		cx=0;
+	}
+	if(dir==75)
+	{cx--;
+		if(cx==-1)
+		cx=1;
+	}
+	if(dir==13)
+	{
+	 if(cx==0)
+	 { if(cy==0)
+	   return(1);
+	   if(cy==1)
+	   return(2);
+	   if(cy==2)
+	   return(3);
+	   if(cy==3)
+	   return(4);
+	 }
+	 if(cx==1)
+	 {	if(cy==0)
+		return(5);
+		if(cy==1)
+		return(6);
+		if(cy==2)
+		return(7);
+		if(cy==3)
+		return(8);
+	 }
+	}
+	bomd(cx,cy);
+	}
+}
+
+
+
 void bomd(int a,int b)
 {int mx=getmaxx();
 int my=getmaxy();
