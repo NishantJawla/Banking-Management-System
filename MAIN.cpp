@@ -291,6 +291,46 @@ void withdrawl()
 }//Withdrawl_Page ends
 
 
+
+
+void bomd(int a,int b)
+{int mx=getmaxx();
+int my=getmaxy();
+setcolor(YELLOW);
+		rectangle(mx/60,my/3+20,mx/20*8,my/3-30);            //1L
+		rectangle(mx/60,my/3+70,mx/20*8,my/3+120);           //2L
+		rectangle(mx/60,my/3+170,mx/20*8,my/3+220);          //3L
+		rectangle(mx/60,my/3+270,mx/20*8,my/3+320);          //4L
+		rectangle(mx/2+60,my/3+20,mx/60*53+100,my/3-30);     //1R
+		rectangle(mx/2+60,my/3+70,mx/60*53+100,my/3+120);    //2R
+		rectangle(mx/2+60,my/3+170,mx/60*53+100,my/3+220);   //3R
+		rectangle(mx/2+60,my/3+270,mx/60*53+100,my/3+320);   //4R
+      setcolor(BLUE);
+      if(a==0)
+      { if(b==0)
+		rectangle(mx/60,my/3+20,mx/20*8,my/3-30);            //1L
+	if(b==1)
+		rectangle(mx/60,my/3+70,mx/20*8,my/3+120);           //2L
+	if(b==2)
+		rectangle(mx/60,my/3+170,mx/20*8,my/3+220);          //3L
+	if(b==3)
+		rectangle(mx/60,my/3+270,mx/20*8,my/3+320);          //4L
+      }
+      if(a==1)
+      {if(b==0)
+		rectangle(mx/2+60,my/3+20,mx/60*53+100,my/3-30);     //1R
+       if(b==1)
+		rectangle(mx/2+60,my/3+70,mx/60*53+100,my/3+120);    //2R
+       if(b==2)
+		rectangle(mx/2+60,my/3+170,mx/60*53+100,my/3+220);   //3R
+       if(b==3)
+		rectangle(mx/2+60,my/3+270,mx/60*53+100,my/3+320);   //4R
+     }
+setcolor(WHITE);
+}
+
+
+
 int  s()
 { 	int dir;
 	int cx=0,cy=0;
@@ -346,10 +386,21 @@ int  s()
 
 
 
-void bomd(int a,int b)
-{int mx=getmaxx();
-int my=getmaxy();
-setcolor(YELLOW);
+void main_menu()
+{
+
+	cleardevice();
+	setbkcolor(RED);
+	setcolor(WHITE);
+	int mx=getmaxx();
+	int my=getmaxy();
+	settextstyle(1,0,2);
+	outtextxy(mx/3-40,my/20,"B A N K   OF   U N I O N");
+	settextstyle(0,0,0);
+	outtextxy(mx/3+30,my/10+30,"SELECT TRANSACTION");
+	setcolor(YELLOW);
+	settextstyle(1,0,2);
+		// RECTANGLES CODING HERE L-LEFT RECTANGLES & R-RIGHT RECTANGLES
 		rectangle(mx/60,my/3+20,mx/20*8,my/3-30);            //1L
 		rectangle(mx/60,my/3+70,mx/20*8,my/3+120);           //2L
 		rectangle(mx/60,my/3+170,mx/20*8,my/3+220);          //3L
@@ -358,29 +409,52 @@ setcolor(YELLOW);
 		rectangle(mx/2+60,my/3+70,mx/60*53+100,my/3+120);    //2R
 		rectangle(mx/2+60,my/3+170,mx/60*53+100,my/3+220);   //3R
 		rectangle(mx/2+60,my/3+270,mx/60*53+100,my/3+320);   //4R
-      setcolor(BLUE);
-      if(a==0)
-      { if(b==0)
-		rectangle(mx/60,my/3+20,mx/20*8,my/3-30);            //1L
-	if(b==1)
-		rectangle(mx/60,my/3+70,mx/20*8,my/3+120);           //2L
-	if(b==2)
-		rectangle(mx/60,my/3+170,mx/20*8,my/3+220);          //3L
-	if(b==3)
-		rectangle(mx/60,my/3+270,mx/20*8,my/3+320);          //4L
-      }
-      if(a==1)
-      {if(b==0)
-		rectangle(mx/2+60,my/3+20,mx/60*53+100,my/3-30);     //1R
-       if(b==1)
-		rectangle(mx/2+60,my/3+70,mx/60*53+100,my/3+120);    //2R
-       if(b==2)
-		rectangle(mx/2+60,my/3+170,mx/60*53+100,my/3+220);   //3R
-       if(b==3)
-		rectangle(mx/2+60,my/3+270,mx/60*53+100,my/3+320);   //4R
-     }
-setcolor(WHITE);
-}
+
+		// RECTANGLES CODING END HERE.:-)
+	      // ********************************************
+		//CODING FOR ENTERING TEXT INTO RECTANGLS.
+		setcolor(CYAN);
+		outtextxy(mx/60+75,my/3-20,"DEPOSIT");
+		outtextxy(mx/60+70,my/3+80,"TRANSFER");
+		outtextxy(mx/60+60,my/3+180,"PIN CHANGE");
+		outtextxy(mx/60+80,my/3+280,"OTHERS");
+		outtextxy(mx/2+130,my/3-20,"FAST CASH");
+		outtextxy(mx/2+105,my/3+80,"CASH WITHDRAWL");
+		outtextxy(mx/2+100,my/3+180,"BALANCE ENQUIRY");
+		outtextxy(mx/2+105,my/3+280,"MINI STATEMENT");
+		//CODING FOR ENTERING TEXT INTO RECTANGLES END HERE.:-)
+		//*******************************************************
+		//ENDING PROCESS.
+	int frm=s();//value indicating frame to be opened
+	if(frm==1)
+	{deposit1();
+	}
+	if(frm==2)
+	{
+	 transfer();
+	}
+	if(frm==3)
+	{pin();
+	}
+	if(frm==4)
+	{others();
+	}
+	if(frm==5)
+	{fast_cash();
+	}
+	if(frm==6)
+	{withdrawl();}
+	if(frm==7)
+	{balance();
+	}
+	if(frm==8)
+	{ms();
+	}
+
+	//PROCESS FOR FORMING MENU ENDS HERE.
+	//*******************************************
+}//main menu ends
+
 
 
 
