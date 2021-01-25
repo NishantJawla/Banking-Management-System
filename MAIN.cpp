@@ -213,6 +213,7 @@ getche();
 }//ends login_layout
 
 
+
 void withdrawl()
 {
 	cleardevice();
@@ -329,6 +330,7 @@ setcolor(WHITE);
 }
 
 
+
 int  s()
 { 	int dir;
 	int cx=0,cy=0;
@@ -383,6 +385,7 @@ int  s()
 }
 
 
+
 void main_menu()
 {
 
@@ -392,12 +395,12 @@ void main_menu()
 	int mx=getmaxx();
 	int my=getmaxy();
 	settextstyle(1,0,2);
-	outtextxy(mx/3-40,my/20,"B A N K   OF   S  P  S  E  C");
+	outtextxy(mx/3-40,my/20,"B A N K   OF   U N I O N");
 	settextstyle(0,0,0);
 	outtextxy(mx/3+30,my/10+30,"SELECT TRANSACTION");
 	setcolor(YELLOW);
 	settextstyle(1,0,2);
-		// RECTANGLES CODING HERE L-LEFT RECTANGLES & R-RIGHT RECTANGLES.
+		// RECTANGLES CODING HERE L-LEFT RECTANGLES & R-RIGHT RECTANGLES
 		rectangle(mx/60,my/3+20,mx/20*8,my/3-30);            //1L
 		rectangle(mx/60,my/3+70,mx/20*8,my/3+120);           //2L
 		rectangle(mx/60,my/3+170,mx/20*8,my/3+220);          //3L
@@ -406,6 +409,7 @@ void main_menu()
 		rectangle(mx/2+60,my/3+70,mx/60*53+100,my/3+120);    //2R
 		rectangle(mx/2+60,my/3+170,mx/60*53+100,my/3+220);   //3R
 		rectangle(mx/2+60,my/3+270,mx/60*53+100,my/3+320);   //4R
+
 		// RECTANGLES CODING END HERE.:-)
 	      // ********************************************
 		//CODING FOR ENTERING TEXT INTO RECTANGLS.
@@ -450,6 +454,7 @@ void main_menu()
 	//PROCESS FOR FORMING MENU ENDS HERE.
 	//*******************************************
 }//main menu ends
+
 
 
 
