@@ -456,6 +456,92 @@ void main_menu()
 }//main menu ends
 
 
+void balance()         //balance begins
+{cleardevice();
+ int mx=getmaxx(),my=getmaxy();
+ setbkcolor(BLUE);
+ setcolor(YELLOW);
+ settextstyle(1,0,0);
+ outtextxy(mx/4-30,my/20,"BALANCE   ENQUIRY");
+ settextstyle(1,0,1);
+ outtextxy(140,my/2-100,"Dear user your current balance is:");
+ //char* bal=readfile();
+ outtextxy(80,my/2+27,"BALANCE:            Rs.");
+gotoxy(40,18);
+cout<<global.opal;
+ getch();
+}//balance ends
+
+void fast_cash()
+{       cleardevice();
+	int mx=getmaxx();
+	int my=getmaxy();
+	setbkcolor(RED);
+	setcolor(YELLOW);
+	//*************
+	outtextxy(mx/3-40,my/20,"B A N K   OF   S  P  S  E  C");
+	//***************
+		rectangle(mx/60,my/3+20,mx/20*8,my/3-30);            //1L
+		rectangle(mx/60,my/3+70,mx/20*8,my/3+120);           //2L
+		rectangle(mx/60,my/3+170,mx/20*8,my/3+220);          //3L
+		rectangle(mx/60,my/3+270,mx/20*8,my/3+320);          //4L
+		rectangle(mx/2+60,my/3+20,mx/60*53+100,my/3-30);     //1R
+		rectangle(mx/2+60,my/3+70,mx/60*53+100,my/3+120);    //2R
+		rectangle(mx/2+60,my/3+170,mx/60*53+100,my/3+220);   //3R
+		rectangle(mx/2+60,my/3+270,mx/60*53+100,my/3+320);   //4R
+
+	setcolor(CYAN);
+		outtextxy(mx/60+75,my/3-20,"1,000");	//1l               1
+		outtextxy(mx/60+75,my/3+80,"2,000");        //2l           2
+		outtextxy(mx/60+75,my/3+180,"5,000");           //3l       3
+		outtextxy(mx/60+70,my/3+280,"10,000");              //4l   4
+		outtextxy(mx/2+145,my/3-20,"20,000");           //1r       5
+		outtextxy(mx/2+145,my/3+80,"30,000");           //2r       6
+		outtextxy(mx/2+145,my/3+180,"50,000");            //3r     7
+		outtextxy(mx/2+145,my/3+280,"60,000");             ///4r   8
+	long bal;			 //to receive return val from withdr
+	int frm=s();
+	if(frm==1)
+	{
+	bal=withdrawal(1000);
+	}
+	if(frm==2)
+	{
+	bal=withdrawal(2000);
+	}
+	if(frm==3)
+	{
+	bal=withdrawal(5000);
+	}
+	if(frm==4)
+	{
+	bal=withdrawal(10000);
+	}
+	if(frm==5)
+	{
+	bal=withdrawal(20000);
+	}
+	if(frm==6)
+	{
+	bal=withdrawal(30000);
+	}
+	if(frm==7)
+	{
+	bal=withdrawal(50000);
+	}
+	if(frm==8)
+	{
+	bal=withdrawal(60000);
+	}
+       //	updtmst();
+       //	updts();
+	transac();
+	balance();
+	//getch();
+}//fast_cash ends
+
+
+
 
 
 void main()
