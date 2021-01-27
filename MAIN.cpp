@@ -541,6 +541,52 @@ void fast_cash()
 }//fast_cash ends
 
 
+void box(int a,int b)
+{     int mx=getmaxx();int my=getmaxy();
+	setcolor(a);
+	rectangle(mx-100,my-110,mx-5,my-70);
+	setcolor(b);
+	rectangle(mx-100,my-60,mx-5,my-20);
+
+	setcolor(WHITE);
+}
+void setbox(int i)
+{	switch(i)
+	{case 0:box(WHITE,BLACK);
+		break;
+	 case 1:box(BLACK,WHITE);
+		break;
+	}
+}
+
+int scroll(char a)
+{
+	int dir;
+	int c=0;
+	if(a=='\0')
+	{setbox(1); c=1;}
+	else{
+	setbox(c);
+	while(1)
+	{ dir=getch();
+		if(dir==80)
+		{	c++;
+			if(c==2)
+			{c=0;}
+		}
+		if(dir==72)
+		{c--;
+			if(c==-1)
+			{c=1;}
+		}
+		if(dir==13)
+			{break;}
+		setbox(c);
+	}//while
+	}
+return(c);
+}//scroll
+
 
 
 
