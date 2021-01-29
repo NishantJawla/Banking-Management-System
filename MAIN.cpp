@@ -628,6 +628,30 @@ void setbox1(int i)
 }//setbox
 
 
+void scr()
+{
+int i;
+int counter=0;
+setbox1(counter);
+while(1)
+{       i=getch();
+	if(i==80)
+	{       counter++;
+		if(counter==3)
+			counter=0;
+	}
+	if(i==72)
+	{	counter--;
+		if(counter==-1)
+			counter=2;
+	}
+	if(i==13)
+	       { break;}
+	setbox1(counter);
+
+	 //getch();
+}//while
+}
 
 void main()
 {
