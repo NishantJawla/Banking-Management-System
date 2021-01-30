@@ -596,6 +596,26 @@ rectangle(mx/2-150,my/3-40+5,mx/2+150,my/3+20+5);
 	rectangle(mx/2-150,(my/3)+160+5,mx/2+150,my/3+220+5);
 
 
+void deposit1()
+{	cleardevice();
+	setbkcolor(BLUE);
+	int mx=getmaxx();
+	int my=getmaxy();
+	setcolor(YELLOW);
+	settextstyle(1,0,4);
+	outtextxy(mx/4,20,"BANK  OF  SPSEC");
+	setcolor(WHITE);
+	settextstyle(1,0,2);
+	rectangle(mx/2-150,my/3-40+5,mx/2+150,my/3+20+5);
+	rectangle(mx/2-150,my/3+60+5,mx/2+150,my/3+120+5);
+	rectangle(mx/2-150,(my/3)+160+5,mx/2+150,my/3+220+5);
+	setcolor(GREEN);
+	outtextxy(mx/2-100,my/3-20,"CURRENT ACCOUNT");
+	outtextxy(mx/2-95,my/3+80,"SAVINGS ACCOUNT");
+	outtextxy(mx/2-80,my/3+180,"FIXED DEPOSIT");
+	scr();
+	deposit2();
+ }
 
 }
 void box2(int c)
