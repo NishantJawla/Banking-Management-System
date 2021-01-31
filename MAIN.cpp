@@ -594,30 +594,8 @@ rectangle(mx/2-150,my/3-40+5,mx/2+150,my/3+20+5);
 	setcolor(WHITE);
 	rectangle(mx/2-150,my/3+60+5,mx/2+150,my/3+120+5);
 	rectangle(mx/2-150,(my/3)+160+5,mx/2+150,my/3+220+5);
-
-
-void deposit1()
-{	cleardevice();
-	setbkcolor(BLUE);
-	int mx=getmaxx();
-	int my=getmaxy();
-	setcolor(YELLOW);
-	settextstyle(1,0,4);
-	outtextxy(mx/4,20,"BANK  OF  SPSEC");
-	setcolor(WHITE);
-	settextstyle(1,0,2);
-	rectangle(mx/2-150,my/3-40+5,mx/2+150,my/3+20+5);
-	rectangle(mx/2-150,my/3+60+5,mx/2+150,my/3+120+5);
-	rectangle(mx/2-150,(my/3)+160+5,mx/2+150,my/3+220+5);
-	setcolor(GREEN);
-	outtextxy(mx/2-100,my/3-20,"CURRENT ACCOUNT");
-	outtextxy(mx/2-95,my/3+80,"SAVINGS ACCOUNT");
-	outtextxy(mx/2-80,my/3+180,"FIXED DEPOSIT");
-	scr();
-	deposit2();
- }
-
 }
+
 void box2(int c)
 {      	int mx=getmaxx();int my=getmaxy();
 setcolor(c);
@@ -672,6 +650,132 @@ while(1)
 	 //getch();
 }//while
 }
+
+
+void deposit1()
+{	cleardevice();
+	setbkcolor(BLUE);
+	int mx=getmaxx();
+	int my=getmaxy();
+	setcolor(YELLOW);
+	settextstyle(1,0,4);
+	outtextxy(mx/4,20,"BANK  OF  SPSEC");
+	setcolor(WHITE);
+	settextstyle(1,0,2);
+	rectangle(mx/2-150,my/3-40+5,mx/2+150,my/3+20+5);
+	rectangle(mx/2-150,my/3+60+5,mx/2+150,my/3+120+5);
+	rectangle(mx/2-150,(my/3)+160+5,mx/2+150,my/3+220+5);
+	setcolor(GREEN);
+	outtextxy(mx/2-100,my/3-20,"CURRENT ACCOUNT");
+	outtextxy(mx/2-95,my/3+80,"SAVINGS ACCOUNT");
+	outtextxy(mx/2-80,my/3+180,"FIXED DEPOSIT");
+	scr();
+	deposit2();
+ }
+
+
+ void deposit2()
+ {cleardevice();
+
+ setbkcolor(BLUE);
+ setcolor(WHITE);
+	int mx=getmaxx();
+	int my=getmaxy();
+	setcolor(YELLOW);
+	settextstyle(1,0,4);
+	outtextxy(mx/4,20,"BANK  OF  SPSEC");
+	settextstyle(1,0,3);
+	outtextxy(20,my/2-30,"Enter amount to be deposited");
+	setcolor(WHITE);
+	rectangle(mx/2+90,my/2-31,mx-10,my/2+31);
+	rectangle(mx-100,my-110,mx-5,my-70);
+	rectangle(mx-100,my-60,mx-5,my-20);
+	setcolor(GREEN);
+	outtextxy(mx-95,my-105,"Proceed");
+	setcolor(RED);
+	outtextxy(mx-90,my-55,"Cancel");
+	setcolor(WHITE);
+	int l1;
+	l1:
+	char a[8];
+		int i=0; int x=55,y=15;
+	for(i=0;i<8;i++)
+	{a[i]='\0';} i=0;
+	while(i<8)
+	{
+		a[i]=getch();
+		settextstyle(0,0,1);
+		if(a[i]==13)
+			{  a[i]='\0';
+			if(i!=0)
+			{gotoxy(x,y);
+			cout<<". 0 0";}
+			delay(500);
+			break;}
+		if(a[i]==8)
+			{a[i]='\0';
+			gotoxy(x-2,y);
+			x-=2;
+			if(x<=55)
+				x=55;
+			cout<<"  ";
+			--i;
+			if(i<0)
+				i=0;
+			continue;
+			}
+		if(a[i]<48||a[i]>57)
+			{settextstyle(1,0,4);
+			setcolor(RED);
+			outtextxy(245,my/2+50,"Invalid Input");
+			delay(1000);
+			setfillstyle(SOLID_FILL,BLUE);
+			bar(200,my/2+50,470,my/2+100);
+
+			setcolor(WHITE);
+			settextstyle(0,0,1);
+			x=55;y=15;
+			for(int k=0;k<i*2;k++)
+				{gotoxy(x+k,y);
+				cout<<" ";
+				}
+			i=0;
+			for(k=0;k<8;k++)
+				{a[k]='\0';}
+			continue;
+			}
+		gotoxy(x,y);
+		cout<<a[i];
+		x+=2;
+		i++;
+	if(i==8)
+	{ gotoxy(x,y);
+			cout<<". 0 0";
+	}
+	}
+
+       int ab=scroll(a[0]);
+       delay(500);
+       if(ab==0)
+       {cleardevice();
+	int jk=0;
+	long depo=0;
+	while(a[jk]!='\0')
+	{     	depo=depo*10+(a[jk]-48);
+		jk++;
+	}    //while
+	//cout<<depo;
+	//delay(1000);
+	depos(depo);
+	//updtmst();
+	//updts();
+	transac();
+	}//if
+	balance();
+//getch();
+}
+
+
 
 void main()
 {
