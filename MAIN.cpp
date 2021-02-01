@@ -587,6 +587,70 @@ int scroll(char a)
 return(c);
 }//scroll
 
+void box1(int c)
+{     	int mx=getmaxx();int my=getmaxy();
+setcolor(c);
+rectangle(mx/2-150,my/3-40+5,mx/2+150,my/3+20+5);
+	setcolor(WHITE);
+	rectangle(mx/2-150,my/3+60+5,mx/2+150,my/3+120+5);
+	rectangle(mx/2-150,(my/3)+160+5,mx/2+150,my/3+220+5);
+}
+
+void box2(int c)
+{      	int mx=getmaxx();int my=getmaxy();
+setcolor(c);
+	rectangle(mx/2-150,my/3+60+5,mx/2+150,my/3+120+5);
+	setcolor(WHITE);
+	rectangle(mx/2-150,my/3-40+5,mx/2+150,my/3+20+5);
+	rectangle(mx/2-150,(my/3)+160+5,mx/2+150,my/3+220+5);
+}//box2
+void box3(int c)
+{	int mx=getmaxx();int my=getmaxy();
+setcolor(c);
+	rectangle(mx/2-150,(my/3)+160+5,mx/2+150,my/3+220+5);
+	setcolor(WHITE);
+	rectangle(mx/2-150,my/3-40+5,mx/2+150,my/3+20+5);
+	rectangle(mx/2-150,my/3+60+5,mx/2+150,my/3+120+5);
+}//box3
+void setbox1(int i)
+{
+	switch(i)
+	{	case 0: box1(GREEN);
+			break;
+		case 1: box2(GREEN);
+			break;
+		case 2: box3(GREEN);
+			break;
+	}
+
+}//setbox
+
+
+void scr()
+{
+int i;
+int counter=0;
+setbox1(counter);
+while(1)
+{       i=getch();
+	if(i==80)
+	{       counter++;
+		if(counter==3)
+			counter=0;
+	}
+	if(i==72)
+	{	counter--;
+		if(counter==-1)
+			counter=2;
+	}
+	if(i==13)
+	       { break;}
+	setbox1(counter);
+
+	 //getch();
+}//while
+}
+
 
 void deposit1()
 {	cleardevice();
@@ -608,6 +672,7 @@ void deposit1()
 	scr();
 	deposit2();
  }
+
 
  void deposit2()
  {cleardevice();
@@ -744,6 +809,7 @@ void others()
 	outtextxy(4*mx/5-10,450,"Back To Menu");
 	getch();
 }//others ends
+
 
 void main()
 {
