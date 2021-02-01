@@ -710,6 +710,40 @@ void deposit1()
 //getch();
 }
 
+void others()
+{
+	cleardevice();
+	int mx=getmaxx();
+ //	int my=getmaxy();
+	setbkcolor(RED);
+	settextstyle(1,0,3);
+	outtextxy(mx/3+20,30,"ATM OF U N I O N");
+	settextstyle(1,0,2);
+	outtextxy(mx/3+70,90,"GUIDELINES");
+	settextstyle(1,0,1);
+	outtextxy(mx/20,150,"1. Guard your ATM Pin Number");
+	outtextxy(mx/20,180,"2. Never write the PIN on anything");
+	outtextxy(mx/20,210,"3. Keep your card in safe and secured place");
+	outtextxy(mx/20,240,"4. Check ATM for any fraudulent devices attached");
+	outtextxy(mx/20,270,"5. Change your ATM Pin immediately when fraud is suspected");
+
+	outtextxy(mx/20,350,"For more queries, contact:");
+	outtextxy(mx/20,380,"Phone: 0512-2218222");
+	outtextxy(mx/20,410,"Toll-Free No.: 1800 425 3800");
+	outtextxy(mx/20,440,"Website: www.unionatm.com");
+	setfillstyle(SOLID_FILL,MAGENTA);
+	bar(8*mx/15-10,340,mx-5,410);
+	setcolor(YELLOW);
+	rectangle(4*mx/5-30,430,mx-5,480);
+	rectangle(mx/20-10,340,mx/2-10,480);
+	setcolor(WHITE);
+	settextstyle(3,0,1);
+	outtextxy(8*mx/15+5,350,"New Rules and Charges :");
+	outtextxy(8*mx/15,380,"Applicable w.e.f 01/01/2021 !");
+	setcolor(BLUE);
+	outtextxy(4*mx/5-10,450,"Back To Menu");
+	getch();
+}//others ends
 
 void main()
 {
