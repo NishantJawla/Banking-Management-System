@@ -810,6 +810,113 @@ void others()
 	getch();
 }//others ends
 
+void welcome()
+{	cleardevice();
+	setbkcolor(RED);
+	int mx=getmaxx();
+	int my=getmaxy();
+	setcolor(BLUE);
+	settextstyle(1,0,4);
+	outtextxy(200,25," W E L C O M E");
+	settextstyle(1,0,3);
+	outtextxy(50,200,"Dear user,");
+	setcolor(YELLOW);
+	outtextxy(200,200,global.name);
+	setcolor(BLUE);
+	int i=0;
+	for(i=0;i<=11;i++)
+		{
+		 int j=i%4;
+		 switch(j)
+			{
+				case 0:gotoxy(66,14);
+				       cout<<".       ";
+				       delay(300);
+				       break;
+				case 1:gotoxy(66,14);
+				       cout<<". .     ";
+				       delay(440);
+				       break;
+				case 2:gotoxy(66,14);
+				       cout<<". . .   ";
+				       delay(570);
+				       break;
+				case 3:gotoxy(66,14);
+				       cout<<". . . . ";
+				       delay(660);
+				       break;
+				default: cout<<" ";
+			} //switch
+		delay(1);
+		}//for
+	//getch();
+}
+
+void ms()
+{       int lab;
+	lab:
+
+	cleardevice();
+	setbkcolor(RED);
+	setcolor(YELLOW);
+	int mx=getmaxx();
+	int my=getmaxy();
+	settextstyle(1,0,3);
+	outtextxy(mx/3-10,10,"Mini Statment");
+	setcolor(WHITE);
+	settextstyle(0,0,1);
+	outtextxy(mx/20+150,my/5,"Your Previous 3 Transictions Are ");
+	fstream g;
+	g.open("ballog.dat",ios::in|ios::binary);
+	while(!g.eof())
+	{ bal p;
+	  g.read((char*)&p,sizeof(p));
+	  if(strcmpi(p.cno,globe.cno)==0)
+	  {   gotoxy(25,17);
+	      cout<<" Balance:               Rs."<<p.balance<<endl;
+	      gotoxy(25,18);
+	      cout<<" Drawn:                 Rs."<<p.drawn;
+	      gotoxy(25,19);
+	      cout<<" Deposited:             Rs."<<p.deposited;
+	      gotoxy(25,20);
+	      cout<<"Last date of transaction:  ";
+	      putch(p.dot.da_day);
+	      cout<<"/";
+	      putch(p.dot.da_mon);
+	      cout<<"/"<<p.dot.da_year;
+	  }
+	}
+	g.close();
+
+	delay(500);
+	//flush();  ******************************************
+	setcolor(YELLOW);
+
+
+
+
+	rectangle(4*mx/5,4*my/5+40,5*mx/5+50,4*my/5+90);
+
+	outtextxy(4*mx/5+10,4*my/5+60,"Proceed");
+
+
+
+setcolor(13);
+rectangle(1,1,639,479);
+rectangle(15,15,624,464);
+//setcolor(LIGHTBLUE);
+setfillstyle(6,11);
+
+floodfill(2,2,13);
+settextstyle(7,0,3);
+setcolor(12);
+
+
+outtextxy(200,200,"S.P.S.E.C BANK") ;
+
+getch();
+}
+
 
 void main()
 {
