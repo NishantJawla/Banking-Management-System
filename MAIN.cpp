@@ -918,6 +918,24 @@ getch();
 }
 
 
+void transac()
+{cleardevice();                     //showing result
+      int mx= getmaxx();
+      int my=getmaxy();
+      setbkcolor(BLUE);
+      setcolor(WHITE);
+     // int mx=getmaxx();
+     // int my=getmaxy();
+      setcolor(YELLOW);
+      settextstyle(1,0,4);
+      outtextxy(200,20,"BANK  OF  UNION");
+      setcolor(CYAN);
+      settextstyle(1,0,3);
+      outtextxy(150,my/2,"Your transaction is complete");
+      delay(2000);
+}
+
+
 void main()
 {
     //int mx=getmaxx();
